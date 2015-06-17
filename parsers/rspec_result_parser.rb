@@ -17,8 +17,11 @@ end
 
 class ResultParser
   LEVEL_MARGIN = 15
-  attr_accessor :example_index
   @example_index = 0
+
+  class << self
+    attr_accessor :example_index
+  end
 
   def self.parse_rspec_html(html_path)
     page = Nokogiri::HTML(open(html_path))
