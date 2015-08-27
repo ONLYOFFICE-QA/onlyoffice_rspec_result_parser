@@ -4,7 +4,7 @@ require_relative 'rspec_result_parser/example'
 require_relative 'rspec_result_parser/result_creator'
 require_relative 'rspec_result_parser/rspec_result'
 
-class  String
+class String
   def get_style_param(param)
     m = match(/#{param}:\s(.*);/)
     m[1]
