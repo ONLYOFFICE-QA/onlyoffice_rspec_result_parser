@@ -37,6 +37,11 @@ class ResultParser
       get_processing(page)
     end
 
+    def get_failed_cases_count_from_html(html_path)
+      page = Nokogiri::HTML(open(html_path))
+      get_failed_count(page)
+    end
+
     def get_total_result_of_rspec_html(html_path)
       page = Nokogiri::HTML(open(html_path))
       get_totals(page)
@@ -65,6 +70,10 @@ class ResultParser
       else
         '0'
       end
+    end
+
+    def get_failed_count(page)
+      page.xpath("//*[@class='example failed']").length
     end
 
     def get_total_result(page)
