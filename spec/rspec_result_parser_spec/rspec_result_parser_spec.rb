@@ -6,6 +6,11 @@ describe 'My behaviour' do
     expect(result).not_to be_nil
   end
 
+  it 'failed-cases-count zero' do
+    result = ResultParser.get_failed_cases_count_from_html('spec/rspec_result_parser_spec/rspec_examples/result_1.html')
+    expect(result).to eq(0)
+  end
+
   it 'failed-cases-count not zero' do
     result = ResultParser.get_failed_cases_count_from_html('spec/rspec_result_parser_spec/rspec_examples/failed-cases-count.html')
     expect(result).to eq(3)
