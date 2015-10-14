@@ -23,6 +23,6 @@ describe 'My behaviour' do
 
   it 'check image is inline' do
     result = ResultParser.parse_rspec_html_string(File.read('spec/rspec_result_parser_spec/rspec_examples/link_in_result.html'))
-    expect(result.describe.child.first.message).to include("<img src='https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/irkptCRjvigq.png'>")
+    expect(result.describe.child.first.message).to include("<img src='https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/irkptCRjvigq.png' height='50%' width='50%'>")
   end
 end

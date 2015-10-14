@@ -151,7 +151,7 @@ class ResultParser
       links = URI.extract(text)
       links.each do |current_link|
         if current_link.end_with?('png')
-          text.gsub!(current_link, "<img src='#{current_link}'>")
+          text.gsub!(current_link, "<img src='#{current_link}' height='50%' width='50%'>")
         elsif current_link.start_with?('http')
           text.gsub!(current_link, "<a='#{current_link}'>#{current_link}</a>")
         end
