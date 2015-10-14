@@ -18,7 +18,7 @@ describe 'My behaviour' do
 
   it 'check url is clickable' do
     result = ResultParser.parse_rspec_html_string(File.read('spec/rspec_result_parser_spec/rspec_examples/link_in_result.html'))
-    expect(result.describe.child.first.message).to include("<a='https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&new=true'>https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&new=true</a>")
+    expect(result.describe.child.first.message).to include("<a href='https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&new=true'>https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&new=true</a>")
   end
 
   it 'check image is inline' do
