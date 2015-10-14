@@ -146,7 +146,7 @@ class ResultParser
 
     # Method make all links in text clickable
     # @param [String] text current text
-    # @return [String] text with clicable link
+    # @return [String] text with clickable link
     def format_link(text)
       links = URI.extract(text)
       links.each do |current_link|
