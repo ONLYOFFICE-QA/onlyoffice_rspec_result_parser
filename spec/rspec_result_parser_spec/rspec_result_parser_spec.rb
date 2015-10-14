@@ -20,4 +20,9 @@ describe 'My behaviour' do
     result = ResultParser.parse_rspec_html_string(File.read('spec/rspec_result_parser_spec/rspec_examples/link_in_result.html'))
     expect(result.describe.child.first.message).to include("<a='https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&new=true'>https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&new=true</a>")
   end
+
+  it 'check image is inline' do
+    result = ResultParser.parse_rspec_html_string(File.read('spec/rspec_result_parser_spec/rspec_examples/link_in_result.html'))
+    expect(result.describe.child.first.message).to include("<img src='https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/irkptCRjvigq.png'>")
+  end
 end
