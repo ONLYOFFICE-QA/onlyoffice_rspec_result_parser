@@ -1,4 +1,6 @@
 require 'nokogiri'
+require 'uri'
+
 require_relative 'rspec_result_parser/describe'
 require_relative 'rspec_result_parser/example'
 require_relative 'rspec_result_parser/result_creator'
@@ -133,13 +135,26 @@ class ResultParser
       example_obj.passed = example[:class].split(' ')[1]
       if example_obj.passed == 'failed'
         example_obj.duration = example.css('span')[1].text
-        example_obj.message = example.css('div.message').text
+        example_obj.message = format_link(example.css('div.message').text)
         example_obj.backtrace = example.css('div.backtrace').text
         example_obj.code = example.css('code').children.to_s
       elsif example_obj.passed == 'passed'
         example_obj.duration = example.css('span')[1].text
       end
       example_obj
+    end
+
+    # Method make all links in text clickable
+    # @param [String] text current text
+    # @return [String] text with clicable link
+    def format_link(text)
+      links = URI.extract(text)
+      links.each do |current_link|
+        if current_link.start_with?('http')
+          text.gsub!(current_link, "<a='#{current_link}'>#{current_link}</a>")
+        end
+      end
+      text
     end
   end
 end
