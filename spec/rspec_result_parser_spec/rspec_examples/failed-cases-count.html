@@ -70,7 +70,7 @@ function get_display_style(display_flag) {
 
 function assign_display_style(classname, display_flag) {
   var style_mode = get_display_style(display_flag);
-  var elems = document.getElementsByClassName(classname)
+  var elems = document.getElementsByClassName(classname);
   for (var i=0; i<elems.length;i++) {
     elems[i].style.display = style_mode;
   }
@@ -79,7 +79,7 @@ function assign_display_style(classname, display_flag) {
 function assign_display_style_for_group(classname, display_flag, subgroup_flag) {
   var display_style_mode = get_display_style(display_flag);
   var subgroup_style_mode = get_display_style(subgroup_flag);
-  var elems = document.getElementsByClassName(classname)
+  var elems = document.getElementsByClassName(classname);
   for (var i=0; i<elems.length;i++) {
     var style_mode = display_style_mode;
     if ((display_flag != subgroup_flag) && (elems[i].getElementsByTagName('dt')[0].innerHTML.indexOf(", ") != -1)) {
