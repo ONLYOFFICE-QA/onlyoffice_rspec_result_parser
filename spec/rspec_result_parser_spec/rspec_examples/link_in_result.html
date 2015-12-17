@@ -281,79 +281,40 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">Fill doc with some functional data and check numbering</dt>
+  <dt id="example_group_1" class="passed">Test Description</dt>
     <script type="text/javascript">makeRed('rspec-header');</script>
     <script type="text/javascript">makeRed('div_group_1');</script>
     <script type="text/javascript">makeRed('example_group_1');</script>
-    <script type="text/javascript">moveProgressBar('3.3');</script>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
     <dd class="example failed">
-      <span class="failed_spec_name">marked list 1 is underline</span>
-      <span class="duration">768.99091s</span>
+      <span class="failed_spec_name">Single user test</span>
+      <span class="duration">44.26254s</span>
       <div class="failure" id="failure_1">
-        <div class="message"><pre>Error happened during FileHelper.wait_file_to_download(/tmp/webdriver_downloads/rLKsfaRkmJdLsuVvwcgLEadDKLmZsLLe/NumberingTest.docx): Timeout 300 for downloading file /tmp/webdriver_downloads/rLKsfaRkmJdLsuVvwcgLEadDKLmZsLLe/NumberingTest.docx is exceed
+        <div class="message"><pre>Webdriver.get_attribute(//*[contains(@class,&quot;brand-logo&quot;)], href) failed because element not found
 
-Page address: https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2435153&amp;new=true
+Page address: https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&amp;new=true
 
-Error screenshot: https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/GdqKoqVeniVs.png</pre></div>
-        <div class="backtrace"><pre>/home/nct-at/RubymineProjects/SharedFunctional/helpers/webdriver.rb:1147:in `webdriver_error&#39;
-./framework/management.rb:185:in `rescue in download_file_and_parse&#39;
-./framework/management.rb:182:in `download_file_and_parse&#39;
-./framework/management.rb:165:in `download_file_and_parse&#39;
-./spec/document_editor/one_user/functional/advanced_numbering/numbering_advanced_2_spec.rb:28:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:52:in `block (3 levels) in apply&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:43:in `times&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:43:in `block (2 levels) in apply&#39;</pre></div>
+Error screenshot: https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/irkptCRjvigq.png</pre></div>
+        <div class="backtrace"><pre>/home/lobashov-2/RubymineProjects/SharedFunctional/helpers/webdriver.rb:1147:in `webdriver_error&#39;
+/home/lobashov-2/RubymineProjects/SharedFunctional/helpers/webdriver.rb:1052:in `get_attribute&#39;
+./framework/project_helpers/selenium/selenium_commands.rb:26:in `selenium_functions&#39;
+./framework/project_helpers/selenium/selenium_commands.rb:124:in `get_attribute&#39;
+./framework/embedded_viewer/embedded_viewer.rb:100:in `get_onlyoffice_href_value&#39;
+./spec/studio/run_test_single_spec.rb:18:in `block (2 levels) in &lt;top (required)&gt;&#39;
+/home/lobashov-2/.rvm/gems/ruby-2.2.3/gems/rspec-retry-0.4.4/lib/rspec/retry.rb:53:in `block (3 levels) in apply&#39;
+/home/lobashov-2/.rvm/gems/ruby-2.2.3/gems/rspec-retry-0.4.4/lib/rspec/retry.rb:44:in `times&#39;
+/home/lobashov-2/.rvm/gems/ruby-2.2.3/gems/rspec-retry-0.4.4/lib/rspec/retry.rb:44:in `block (2 levels) in apply&#39;</pre></div>
     <pre class="ruby"><code><span class="linenum">1145</span>    select_top_frame
 <span class="linenum">1146</span>    current_url = get_url
 <span class="offending"><span class="linenum">1147</span>    fail exception, <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">#{</span>error_message<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="char">\n</span><span class="content">Page address: </span><span class="inline"><span class="inline-delimiter">#{</span>current_url<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="char">\n</span><span class="content">Error </span><span class="inline"><span class="inline-delimiter">#{</span>webdriver_screenshot<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></span>
 <span class="linenum">1148</span>  <span class="keyword">end</span></code></pre>
       </div>
     </dd>
-    <script type="text/javascript">moveProgressBar('6.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">marked list 2 is underline</span>
-      <span class="duration">768.87838s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>Error happened during FileHelper.wait_file_to_download(/tmp/webdriver_downloads/OzqPzhfQHXOhOtDBojfuhTVFxiZaxkrQ/NumberingTest.docx): Timeout 300 for downloading file /tmp/webdriver_downloads/OzqPzhfQHXOhOtDBojfuhTVFxiZaxkrQ/NumberingTest.docx is exceed
-
-Page address: https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2435171&amp;new=true
-
-Error screenshot: https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/XKQOpHsiDQiB.png</pre></div>
-        <div class="backtrace"><pre>/home/nct-at/RubymineProjects/SharedFunctional/helpers/webdriver.rb:1147:in `webdriver_error&#39;
-./framework/management.rb:185:in `rescue in download_file_and_parse&#39;
-./framework/management.rb:182:in `download_file_and_parse&#39;
-./framework/management.rb:165:in `download_file_and_parse&#39;
-./spec/document_editor/one_user/functional/advanced_numbering/numbering_advanced_2_spec.rb:43:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:52:in `block (3 levels) in apply&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:43:in `times&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:43:in `block (2 levels) in apply&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1145</span>    select_top_frame
-<span class="linenum">1146</span>    current_url = get_url
-<span class="offending"><span class="linenum">1147</span>    fail exception, <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">#{</span>error_message<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="char">\n</span><span class="content">Page address: </span><span class="inline"><span class="inline-delimiter">#{</span>current_url<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="char">\n</span><span class="content">Error </span><span class="inline"><span class="inline-delimiter">#{</span>webdriver_screenshot<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></span>
-<span class="linenum">1148</span>  <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('10.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">marked list 3 is underline</span>
-      <span class="duration">771.14122s</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>Error happened during FileHelper.wait_file_to_download(/tmp/webdriver_downloads/hzHLSLWnYCTDKUItbblUOYElnxjlvzFa/NumberingTest.docx): Timeout 300 for downloading file /tmp/webdriver_downloads/hzHLSLWnYCTDKUItbblUOYElnxjlvzFa/NumberingTest.docx is exceed
-
-Page address: https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2435205&amp;new=true
-
-Error screenshot: https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/zVAGnDCgqNGx.png</pre></div>
-        <div class="backtrace"><pre>/home/nct-at/RubymineProjects/SharedFunctional/helpers/webdriver.rb:1147:in `webdriver_error&#39;
-./framework/management.rb:185:in `rescue in download_file_and_parse&#39;
-./framework/management.rb:182:in `download_file_and_parse&#39;
-./framework/management.rb:165:in `download_file_and_parse&#39;
-./spec/document_editor/one_user/functional/advanced_numbering/numbering_advanced_2_spec.rb:58:in `block (2 levels) in &lt;top (required)&gt;&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:52:in `block (3 levels) in apply&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:43:in `times&#39;
-/home/nct-at/.rvm/gems/ruby-2.1.6/gems/rspec-retry-0.4.2/lib/rspec/retry.rb:43:in `block (2 levels) in apply&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1145</span>    select_top_frame
-<span class="linenum">1146</span>    current_url = get_url
-<span class="offending"><span class="linenum">1147</span>    fail exception, <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">#{</span>error_message<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="char">\n</span><span class="content">Page address: </span><span class="inline"><span class="inline-delimiter">#{</span>current_url<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="char">\n</span><span class="content">Error </span><span class="inline"><span class="inline-delimiter">#{</span>webdriver_screenshot<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></span>
-<span class="linenum">1148</span>  <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>44.28744 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "1 example, 1 failure";</script>
+</div>
+</div>
+</body>
+</html>
