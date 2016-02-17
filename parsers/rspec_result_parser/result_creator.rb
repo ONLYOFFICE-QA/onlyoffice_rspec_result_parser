@@ -2,8 +2,8 @@ class ResultCreator
   def push_to_end(describe, level)
     if level == 0
       @final_result = describe
-    else
-      @final_result.find_last_on_lvl(level - 1).child << describe if level > 0
+    elsif level > 0
+      @final_result.find_last_on_lvl(level - 1).child << describe
     end
   end
 
