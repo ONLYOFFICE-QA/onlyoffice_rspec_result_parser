@@ -96,11 +96,11 @@ class ResultParser
       total_elem = page.css('script:contains(" example")')
       if total_elem
         totals = total_elem.text.match(/"(.*?)"/)
-        if totals
-          totals = totals[1]
-        else
-          totals = ''
-        end
+        totals = if totals
+                   totals[1]
+                 else
+                   ''
+                 end
       end
       totals
     end
