@@ -150,7 +150,7 @@ class ResultParser
     def format_link(text)
       links = URI.extract(text)
       links.each do |current_link|
-        if current_link.end_with?('png') || current_link.end_with?('jpg')
+        if current_link.end_with?('png', 'jpg')
           text.gsub!(current_link, "<a href='#{current_link}'><img src='#{current_link}' height='50%' width='50%'></a>")
         elsif current_link.start_with?('http')
           text.gsub!(current_link, "<a href='#{current_link}'>#{current_link}</a>")
