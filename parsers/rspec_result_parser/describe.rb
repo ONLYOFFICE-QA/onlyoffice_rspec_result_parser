@@ -8,6 +8,6 @@ class Describe
   end
 
   def find_last_on_lvl(level)
-    level == 0 ? self : @child.last.find_last_on_lvl(level - 1)
+    level.zero? ? self : @child.last.find_last_on_lvl(level - 1)
   end
 end
