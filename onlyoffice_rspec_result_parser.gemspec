@@ -15,7 +15,6 @@ Gem::Specification.new do |spec|
 
   spec.files = `git ls-files lib LICENSE.txt README.md`.split($RS)
 
-  spec.add_development_dependency 'bundler', '~> 1.13'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_runtime_dependency('nokogiri', '~> 1.6')
+  spec.license = 'AGPL-3.0'
 end
