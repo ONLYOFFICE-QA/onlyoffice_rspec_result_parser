@@ -1,0 +1,11 @@
+sudo: false
+language: ruby
+rvm:
+- ruby-head
+- 2.3.0
+- 2.2
+- 2.1
+before_install: gem install bundler -v 1.13.4
+bundler_args: "--without development"
+script:
+- bundle exec rspec
