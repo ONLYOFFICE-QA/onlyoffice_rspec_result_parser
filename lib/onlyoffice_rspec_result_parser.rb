@@ -1,0 +1,1 @@
+require 'onlyoffice_rspec_result_parser/version'
