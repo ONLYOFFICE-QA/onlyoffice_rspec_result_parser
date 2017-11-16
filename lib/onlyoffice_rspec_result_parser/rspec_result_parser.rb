@@ -16,27 +16,24 @@ module OnlyofficeRspecResultParser
       attr_accessor :example_index
 
       def parse_rspec_html(html_path)
-        page = Nokogiri::HTML(open(html_path))
+        page = Nokogiri::HTML(read_file(html_path))
         parse_test_result(page)
       end
 
-      def parse_rspec_html_string(html_string)
-        page = Nokogiri::HTML(html_string)
-        parse_test_result(page)
-      end
+      alias parse_rspec_html_string parse_rspec_html
 
       def get_processing_of_rspec_html(html_path)
-        page = Nokogiri::HTML(open(html_path))
+        page = Nokogiri::HTML(read_file(html_path))
         get_processing(page)
       end
 
       def get_failed_cases_count_from_html(html_path)
-        page = Nokogiri::HTML(open(html_path))
+        page = Nokogiri::HTML(read_file(html_path))
         get_failed_count(page)
       end
 
       def get_total_result_of_rspec_html(html_path)
-        page = Nokogiri::HTML(open(html_path))
+        page = Nokogiri::HTML(read_file(html_path))
         get_totals(page)
       end
 
@@ -149,6 +146,16 @@ module OnlyofficeRspecResultParser
           end
         end
         text
+      end
+
+      private
+
+      # Read file from disk or use string
+      # @param data [String] filepath or data string
+      # @return [String] result of read
+      def read_file(data)
+        return data unless File.exist?(data)
+        File.read(data)
       end
     end
   end

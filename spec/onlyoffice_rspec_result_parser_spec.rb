@@ -6,6 +6,11 @@ describe 'My behaviour' do
     expect(result).not_to be_nil
   end
 
+  it 'result 1 via file name' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html_string('spec/rspec_examples/result_1.html')
+    expect(result).not_to be_nil
+  end
+
   it 'failed-cases-count zero' do
     result = OnlyofficeRspecResultParser::ResultParser.get_failed_cases_count_from_html('spec/rspec_examples/result_1.html')
     expect(result).to eq(0)
