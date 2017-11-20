@@ -111,41 +111,11 @@ module OnlyofficeRspecResultParser
         unless describe.css('dd').empty?
           describe.css('dd').each_with_index do |example|
             # example_log = describe.xpath("//dd/preceding-sibling::text()[1]")[@@example_index].text.strip
-            describe_obj.child << parse_example(example)
+            describe_obj.child << Example.new(example)
             ResultParser.example_index += 1
           end
         end
         describe_obj
-      end
-
-      def parse_example(example)
-        example_obj = Example.new
-        example_obj.text = example.css('span').first.text
-        example_obj.passed = example[:class].split(' ')[1]
-        if example_obj.passed == 'failed'
-          example_obj.duration = example.css('span')[1].text
-          example_obj.message = format_link(example.css('div.message').text)
-          example_obj.backtrace = example.css('div.backtrace').text
-          example_obj.code = example.css('code').children.to_s
-        elsif example_obj.passed == 'passed'
-          example_obj.duration = example.css('span')[1].text
-        end
-        example_obj
-      end
-
-      # Method make all links in text clickable
-      # @param [String] text current text
-      # @return [String] text with clickable link
-      def format_link(text)
-        links = URI.extract(text)
-        links.each do |current_link|
-          if current_link.end_with?('png', 'jpg')
-            text.gsub!(current_link, "<a href='#{current_link}'><img src='#{current_link}' height='50%' width='50%'></a>")
-          elsif current_link.start_with?('http')
-            text.gsub!(current_link, "<a href='#{current_link}'>#{current_link}</a>")
-          end
-        end
-        text
       end
 
       private
