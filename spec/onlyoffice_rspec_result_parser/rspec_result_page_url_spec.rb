@@ -7,7 +7,7 @@ describe 'My behaviour' do
   end
 
   it 'check page url field not empty' do
-    result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html_string(File.read('spec/rspec_examples/link_in_result.html'))
-    expect(result.describe.child.first.page_url).to eq('https://doc-linux-autotest.teamlab.info/products/files/doceditor.aspx?fileid=2678604&new=true')
+    result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html_string(File.read('spec/rspec_examples/result_page_url.html'))
+    expect(result.describe.child[2].page_url).to eq('https://saul.teamlab.info/products/files/doceditor.aspx?fileid=42774')
   end
 end

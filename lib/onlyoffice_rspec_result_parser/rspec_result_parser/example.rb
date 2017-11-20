@@ -26,7 +26,7 @@ module OnlyofficeRspecResultParser
 
     def fetch_page_url
       return nil unless @message
-      message_url_line = @message.match(/^Page address:.*/)
+      message_url_line = @message.match(/^.*Page address:.*/)
       return nil unless message_url_line
       message_url_line.to_s.match(/'.*'/).to_s.delete("'")
     end
