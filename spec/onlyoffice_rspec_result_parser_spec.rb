@@ -30,4 +30,9 @@ describe 'My behaviour' do
     result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html_string(File.read('spec/rspec_examples/link_in_result.html'))
     expect(result.describe.child.first.message).to include("<img src='https://nct-data-share.s3-us-west-2.amazonaws.com/screenshots/irkptCRjvigq.png' height='50%' width='50%'>")
   end
+
+  it 'parse_rspec_html contained failed count' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html('spec/rspec_examples/failed-cases-count.html')
+    expect(result.failed_count).to eq(3)
+  end
 end
