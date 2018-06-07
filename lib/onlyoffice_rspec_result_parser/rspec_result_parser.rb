@@ -45,6 +45,7 @@ module OnlyofficeRspecResultParser
         rspec_results.result = get_total_result(page)
         rspec_results.time = get_total_time(page)
         rspec_results.total = get_totals(page)
+        rspec_results.failed_count = get_failed_count(page)
         rspec_results
       end
 
