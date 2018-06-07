@@ -37,12 +37,6 @@ Style/Documentation:
     - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/result_creator.rb'
     - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/rspec_result.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/Encoding:
-  Exclude:
-    - 'onlyoffice_rspec_result_parser.gemspec'
-
 # Offense count: 20
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
