@@ -20,6 +20,13 @@ module OnlyofficeRspecResultParser
         parse_test_result(page)
       end
 
+      # @param file [String] path to file
+      # @return [RspecResult] result of parsing
+      def parse_metadata(file)
+        page = Nokogiri::HTML(read_file(file))
+        parse_test_result(page, with_describe_info: false)
+      end
+
       alias parse_rspec_html_string parse_rspec_html
 
       def get_processing_of_rspec_html(html_path)
@@ -37,10 +44,13 @@ module OnlyofficeRspecResultParser
         get_totals(page)
       end
 
-      def parse_test_result(page)
+      # @param page [String] data in page
+      # @param with_describe_info [Boolean] if describe metadata should be included
+      # @return [RspecResult] result of parsing
+      def parse_test_result(page, with_describe_info: true)
         ResultParser.example_index = 0
         rspec_results = RspecResult.new
-        rspec_results.describe = get_describe(page)
+        rspec_results.describe = get_describe(page) if with_describe_info
         rspec_results.processing = get_processing(page)
         rspec_results.result = get_total_result(page)
         rspec_results.time = get_total_time(page)

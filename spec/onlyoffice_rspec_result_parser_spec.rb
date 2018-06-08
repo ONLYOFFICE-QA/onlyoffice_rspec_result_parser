@@ -45,4 +45,10 @@ describe 'My behaviour' do
     result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html('spec/rspec_examples/failed-cases-count.html')
     expect(result.total_tests_count).to eq(3)
   end
+
+  it 'parse_metadata not contain describe info' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_metadata('spec/rspec_examples/failed-cases-count.html')
+    expect(result).to be_a(OnlyofficeRspecResultParser::RspecResult)
+    expect(result.describe).to be_nil
+  end
 end
