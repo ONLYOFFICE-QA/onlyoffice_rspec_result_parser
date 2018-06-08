@@ -35,4 +35,9 @@ describe 'My behaviour' do
     result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html('spec/rspec_examples/failed-cases-count.html')
     expect(result.failed_count).to eq(3)
   end
+
+  it 'parse_rspec_html contained total count' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_rspec_html('spec/rspec_examples/result_1.html')
+    expect(result.passed_count).to eq(1)
+  end
 end
