@@ -1,7 +1,7 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'simplecov'
 SimpleCov.start
 
 require 'codecov'
 SimpleCov.formatter = SimpleCov::Formatter::Codecov
-require "onlyoffice_rspec_result_parser"
+require 'onlyoffice_rspec_result_parser'

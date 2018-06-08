@@ -110,7 +110,7 @@ module OnlyofficeRspecResultParser
       def parse_describe(describe)
         describe_obj = Describe.new(describe.css('dt').text)
         unless describe.css('dd').empty?
-          describe.css('dd').each_with_index do |example|
+          describe.css('dd').each do |example|
             # example_log = describe.xpath("//dd/preceding-sibling::text()[1]")[@@example_index].text.strip
             describe_obj.child << Example.new(example)
             ResultParser.example_index += 1
