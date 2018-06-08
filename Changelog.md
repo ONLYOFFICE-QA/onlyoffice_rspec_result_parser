@@ -3,6 +3,7 @@
 ## master (unreleased)
 ### New features
 * `ResultParser.parse_rspec_html` return failed count
+* Add `ResultParser#passed_count` parsing
 
 ## 0.0.1
 * Initial release of `onlyoffice_rspec_result_parser` gem
