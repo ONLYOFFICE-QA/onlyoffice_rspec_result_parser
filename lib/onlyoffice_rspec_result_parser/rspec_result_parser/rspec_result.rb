@@ -5,6 +5,8 @@ module OnlyofficeRspecResultParser
     attr_accessor :failed_count
     # @return [Integer] how much tests passed
     attr_accessor :passed_count
+    # @return [Integer] how much tests pending
+    attr_accessor :pending_count
 
     # @return [Integer] total test result count
     def total_tests_count
