@@ -57,6 +57,7 @@ module OnlyofficeRspecResultParser
         rspec_results.total = get_totals(page)
         rspec_results.failed_count = get_failed_count(page)
         rspec_results.passed_count = get_passed_count(page)
+        rspec_results.pending_count = get_pending_count(page)
         rspec_results
       end
 
@@ -80,6 +81,10 @@ module OnlyofficeRspecResultParser
 
       def get_passed_count(page)
         page.xpath("//*[@class='example passed']").length
+      end
+
+      def get_pending_count(page)
+        page.xpath("//*[@class='example not_implemented']").length
       end
 
       def get_total_result(page)
