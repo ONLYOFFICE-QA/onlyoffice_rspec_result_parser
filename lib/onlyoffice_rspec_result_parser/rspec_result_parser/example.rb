@@ -29,15 +29,19 @@ module OnlyofficeRspecResultParser
 
     def fetch_page_url
       return nil unless @message
+
       message_url_line = @message.match(/^.*Page address:.*/)
       return nil unless message_url_line
+
       message_url_line.to_s.match(/'.*'/).to_s.delete("'")
     end
 
     def fetch_screenshot
       return nil unless @message
+
       screenshot_line = @message.match(/^.*Error screenshot:.*/)
       return nil unless screenshot_line
+
       screenshot_line.to_s.match(/'.*?'/).to_s.delete("'")
     end
 

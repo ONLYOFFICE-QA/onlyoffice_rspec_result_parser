@@ -146,6 +146,7 @@ module OnlyofficeRspecResultParser
       # @return [String] result of read
       def read_file(data)
         return data unless File.exist?(data)
+
         File.read(data)
       end
     end
