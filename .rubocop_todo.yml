@@ -38,28 +38,6 @@ Style/Documentation:
     - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/result_creator.rb'
     - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/rspec_result.rb'
 
-# Offense count: 15
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'Gemfile'
-    - 'Rakefile'
-    - 'lib/onlyoffice_rspec_result_parser.rb'
-    - 'lib/onlyoffice_rspec_result_parser/helper/string_helper.rb'
-    - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser.rb'
-    - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/describe.rb'
-    - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/example.rb'
-    - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/result_creator.rb'
-    - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/rspec_result.rb'
-    - 'lib/onlyoffice_rspec_result_parser/version.rb'
-    - 'onlyoffice_rspec_result_parser.gemspec'
-    - 'spec/onlyoffice_rspec_result_parser/rspec_result_page_url_spec.rb'
-    - 'spec/onlyoffice_rspec_result_parser/rspec_result_screenshot_spec.rb'
-    - 'spec/onlyoffice_rspec_result_parser_spec.rb'
-    - 'spec/spec_helper.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle, IgnoredMethods.

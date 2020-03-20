@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeRspecResultParser
   class StringHelper
     def self.get_style_param(string, param)

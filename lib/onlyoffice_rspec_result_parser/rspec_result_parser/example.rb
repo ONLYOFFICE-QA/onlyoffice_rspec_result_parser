@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeRspecResultParser
   class Example
     attr_accessor :text, :duration, :message, :backtrace, :code, :log, :passed

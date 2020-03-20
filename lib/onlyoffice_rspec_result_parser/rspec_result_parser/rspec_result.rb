@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeRspecResultParser
   class RspecResult
     attr_accessor :processing, :result, :time, :total, :describe
