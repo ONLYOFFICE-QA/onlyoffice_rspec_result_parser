@@ -45,7 +45,8 @@ module OnlyofficeRspecResultParser
       end
 
       # @param page [String] data in page
-      # @param with_describe_info [Boolean] if describe metadata should be included
+      # @param with_describe_info [Boolean] if
+      #   describe metadata should be included
       # @return [RspecResult] result of parsing
       def parse_test_result(page, with_describe_info: true)
         ResultParser.example_index = 0
@@ -79,7 +80,6 @@ module OnlyofficeRspecResultParser
         describe_obj = Describe.new(describe.css('dt').text)
         unless describe.css('dd').empty?
           describe.css('dd').each do |example|
-            # example_log = describe.xpath("//dd/preceding-sibling::text()[1]")[@@example_index].text.strip
             describe_obj.child << Example.new(example)
             ResultParser.example_index += 1
           end
