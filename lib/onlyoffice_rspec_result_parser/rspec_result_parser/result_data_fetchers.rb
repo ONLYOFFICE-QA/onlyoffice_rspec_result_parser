@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeRspecResultParser
   module ResultDataFetchers
     LEVEL_MARGIN = 15
