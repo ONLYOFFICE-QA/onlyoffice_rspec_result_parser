@@ -4,27 +4,6 @@ require 'spec_helper'
 
 describe OnlyofficeRspecResultParser::ResultParser do
   let(:link_in_result) { File.read('spec/rspec_examples/link_in_result.html') }
-  let(:result_1_html) { 'spec/rspec_examples/result_1.html' }
-
-  it 'result 1' do
-    result = described_class.parse_rspec_html_string(File.read(result_1_html))
-    expect(result).not_to be_nil
-  end
-
-  it 'result 1 via file name' do
-    result = described_class.parse_rspec_html_string(result_1_html)
-    expect(result).not_to be_nil
-  end
-
-  it 'total count result is not empty' do
-    result = described_class.get_total_result_of_rspec_html(result_1_html)
-    expect(result).to eq('1 example, 0 failures')
-  end
-
-  it 'failed-cases-count zero' do
-    result = described_class.get_failed_cases_count_from_html(result_1_html)
-    expect(result).to eq(0)
-  end
 
   describe 'link in result file' do
     let(:result) { described_class.parse_rspec_html_string(link_in_result) }
@@ -43,11 +22,6 @@ describe OnlyofficeRspecResultParser::ResultParser do
                    "screenshots/irkptCRjvigq.png' height='50%' width='50%'>"
       expect(result.describe.child.first.message).to include(img_string)
     end
-  end
-
-  it 'parse_rspec_html contained total count' do
-    result = described_class.parse_rspec_html(result_1_html)
-    expect(result.passed_count).to eq(1)
   end
 
   it 'parse_rspec_html contained pending count' do
