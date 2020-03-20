@@ -3,7 +3,6 @@
 require 'spec_helper'
 
 describe OnlyofficeRspecResultParser::ResultParser do
-  let(:failed_cases_file) { 'spec/rspec_examples/failed-cases-count.html' }
   let(:link_in_result) { File.read('spec/rspec_examples/link_in_result.html') }
   let(:result_1_html) { 'spec/rspec_examples/result_1.html' }
 
@@ -27,11 +26,6 @@ describe OnlyofficeRspecResultParser::ResultParser do
     expect(result).to eq(0)
   end
 
-  it 'failed-cases-count not zero' do
-    result = described_class.get_failed_cases_count_from_html(failed_cases_file)
-    expect(result).to eq(3)
-  end
-
   describe 'link in result file' do
     let(:result) { described_class.parse_rspec_html_string(link_in_result) }
 
@@ -51,11 +45,6 @@ describe OnlyofficeRspecResultParser::ResultParser do
     end
   end
 
-  it 'parse_rspec_html contained failed count' do
-    result = described_class.parse_rspec_html(failed_cases_file)
-    expect(result.failed_count).to eq(3)
-  end
-
   it 'parse_rspec_html contained total count' do
     result = described_class.parse_rspec_html(result_1_html)
     expect(result.passed_count).to eq(1)
@@ -65,23 +54,6 @@ describe OnlyofficeRspecResultParser::ResultParser do
     file = 'spec/rspec_examples/with-pendings.html'
     result = described_class.parse_rspec_html(file)
     expect(result.pending_count).to eq(3)
-  end
-
-  it 'parse_rspec_html contained total_tests_count' do
-    result = described_class.parse_rspec_html(failed_cases_file)
-    expect(result.total_tests_count).to eq(3)
-  end
-
-  describe 'parse_metadata not contain describe info' do
-    let(:result) { described_class.parse_metadata(failed_cases_file) }
-
-    it 'result is correct class' do
-      expect(result).to be_a(OnlyofficeRspecResultParser::RspecResult)
-    end
-
-    it 'result.describe is not nil' do
-      expect(result.describe).to be_nil
-    end
   end
 
   it 'parse_metadata without moveProgressBar' do
