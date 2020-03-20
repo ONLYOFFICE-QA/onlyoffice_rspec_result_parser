@@ -11,6 +11,7 @@ require_relative 'rspec_result_parser/result_data_fetchers'
 require_relative 'rspec_result_parser/rspec_result'
 
 module OnlyofficeRspecResultParser
+  # Class with stored data about rspec result
   class ResultParser
     @example_index = 0
 

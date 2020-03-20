@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module OnlyofficeRspecResultParser
+  # class for storing rspec result
   class RspecResult
     attr_accessor :processing, :result, :time, :total, :describe
     # @return [Integer] how much tests failed

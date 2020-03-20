@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module OnlyofficeRspecResultParser
+  # rspec ResultCreator methods
   class ResultCreator
     # @return [Describe] result describe
     attr_reader :final_result

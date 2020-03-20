@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module OnlyofficeRspecResultParser
+  # Method to fetch result data
   module ResultDataFetchers
     LEVEL_MARGIN = 15
 
