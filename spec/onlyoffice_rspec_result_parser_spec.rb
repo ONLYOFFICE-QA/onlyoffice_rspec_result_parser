@@ -13,6 +13,11 @@ describe 'My behaviour' do
     expect(result).not_to be_nil
   end
 
+  it 'total count result is not empty' do
+    result = OnlyofficeRspecResultParser::ResultParser.get_total_result_of_rspec_html('spec/rspec_examples/result_1.html')
+    expect(result).to eq('1 example, 0 failures')
+  end
+
   it 'failed-cases-count zero' do
     result = OnlyofficeRspecResultParser::ResultParser.get_failed_cases_count_from_html('spec/rspec_examples/result_1.html')
     expect(result).to eq(0)
@@ -57,5 +62,15 @@ describe 'My behaviour' do
     result = OnlyofficeRspecResultParser::ResultParser.parse_metadata('spec/rspec_examples/failed-cases-count.html')
     expect(result).to be_a(OnlyofficeRspecResultParser::RspecResult)
     expect(result.describe).to be_nil
+  end
+
+  it 'parse_metadata without moveProgressBar' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_metadata('spec/rspec_examples/result_without_move_progress_bar.html')
+    expect(result.processing).to eq('0')
+  end
+
+  it 'parse_metadata without moveProgressBar result' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_metadata('spec/rspec_examples/result_without_move_progress_bar_result.html')
+    expect(result.processing).to eq('0')
   end
 end
