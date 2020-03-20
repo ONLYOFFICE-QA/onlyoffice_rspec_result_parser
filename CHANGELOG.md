@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.1.0 (2020-03-20)
+
 ### New features
 
 * `ResultParser.parse_rspec_html` return failed count
