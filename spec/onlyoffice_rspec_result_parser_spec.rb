@@ -63,4 +63,14 @@ describe 'My behaviour' do
     expect(result).to be_a(OnlyofficeRspecResultParser::RspecResult)
     expect(result.describe).to be_nil
   end
+
+  it 'parse_metadata without moveProgressBar' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_metadata('spec/rspec_examples/result_without_move_progress_bar.html')
+    expect(result.processing).to eq('0')
+  end
+
+  it 'parse_metadata without moveProgressBar result' do
+    result = OnlyofficeRspecResultParser::ResultParser.parse_metadata('spec/rspec_examples/result_without_move_progress_bar_result.html')
+    expect(result.processing).to eq('0')
+  end
 end
