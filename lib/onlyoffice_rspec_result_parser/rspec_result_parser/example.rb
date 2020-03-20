@@ -52,9 +52,9 @@ module OnlyofficeRspecResultParser
       links = URI.extract(text)
       links.each do |current_link|
         if current_link.end_with?('png', 'jpg')
-          text.gsub!(current_link, "<a href='#{current_link}'><img src='#{current_link}' height='50%' width='50%'></a>")
+          text.gsub!(current_link, link_url_50_percent(current_link))
         elsif current_link.start_with?('http')
-          text.gsub!(current_link, "<a href='#{current_link}'>#{current_link}</a>")
+          text.gsub!(current_link, link_url(current_link))
         end
       end
       text
@@ -67,6 +67,18 @@ module OnlyofficeRspecResultParser
       @message = format_link(data.css('div.message').text)
       @backtrace = data.css('div.backtrace').text
       @code = data.css('code').children.to_s
+    end
+
+    # @param [String] link to insert
+    # @return [String] result link with 50 percent size
+    def link_url_50_percent(link)
+      "<a href='#{link}'><img src='#{link}' height='50%' width='50%'></a>"
+    end
+
+    # @param [String] link to insert
+    # @return [String] result link
+    def link_url(link)
+      "<a href='#{link}'>#{link}</a>"
     end
   end
 end
