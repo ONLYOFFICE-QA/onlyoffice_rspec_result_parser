@@ -9,6 +9,7 @@
 * Add `ResultParser#total_tests_count` parsing
 * Add `ResultParser.parse_metadata` method
 * Add `ResultParser#pending_count`
+* Add rake task for release gem on github packages
 
 ### Changes
 
