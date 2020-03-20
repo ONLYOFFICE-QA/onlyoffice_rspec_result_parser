@@ -17,13 +17,6 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 11
 
-# Offense count: 3
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/onlyoffice_rspec_result_parser/rspec_result_page_url_spec.rb'
-    - 'spec/onlyoffice_rspec_result_parser/rspec_result_screenshot_spec.rb'
-    - 'spec/onlyoffice_rspec_result_parser_spec.rb'
-
 # Offense count: 1
 # Configuration parameters: AggregateFailuresByDefault.
 RSpec/MultipleExpectations:
