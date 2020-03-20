@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module OnlyofficeRspecResultParser
+  # rspec ResultCreator methods
   class ResultCreator
     # @return [Describe] result describe
     attr_reader :final_result
@@ -6,7 +9,7 @@ module OnlyofficeRspecResultParser
     def push_to_end(describe, level)
       if level.zero?
         @final_result = describe
-      elsif level > 0
+      elsif level.positive?
         @final_result.find_last_on_lvl(level - 1).child << describe
       end
     end

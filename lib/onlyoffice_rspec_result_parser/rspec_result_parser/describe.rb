@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module OnlyofficeRspecResultParser
+  # rspec describe data
   class Describe
     attr_accessor :child, :text
 

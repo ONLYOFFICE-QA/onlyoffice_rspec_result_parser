@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module OnlyofficeRspecResultParser
+  # rspec example data
   class Example
     attr_accessor :text, :duration, :message, :backtrace, :code, :log, :passed
     # @return [String] link to page url
@@ -18,10 +21,7 @@ module OnlyofficeRspecResultParser
       @text = data.css('span').first.text
       @passed = data[:class].split(' ')[1]
       if @passed == 'failed'
-        @duration = data.css('span')[1].text
-        @message = format_link(data.css('div.message').text)
-        @backtrace = data.css('div.backtrace').text
-        @code = data.css('code').children.to_s
+        fetch_failed_data(data)
       elsif @passed == 'passed'
         @duration = data.css('span')[1].text
       end
@@ -29,15 +29,19 @@ module OnlyofficeRspecResultParser
 
     def fetch_page_url
       return nil unless @message
+
       message_url_line = @message.match(/^.*Page address:.*/)
       return nil unless message_url_line
+
       message_url_line.to_s.match(/'.*'/).to_s.delete("'")
     end
 
     def fetch_screenshot
       return nil unless @message
+
       screenshot_line = @message.match(/^.*Error screenshot:.*/)
       return nil unless screenshot_line
+
       screenshot_line.to_s.match(/'.*?'/).to_s.delete("'")
     end
 
@@ -54,6 +58,15 @@ module OnlyofficeRspecResultParser
         end
       end
       text
+    end
+
+    # Fetch data for failed case
+    # @param data [Nokogiri::XML::Element] element to parse
+    def fetch_failed_data(data)
+      @duration = data.css('span')[1].text
+      @message = format_link(data.css('div.message').text)
+      @backtrace = data.css('div.backtrace').text
+      @code = data.css('code').children.to_s
     end
   end
 end
