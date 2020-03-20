@@ -34,11 +34,6 @@ module OnlyofficeRspecResultParser
 
       alias parse_rspec_html_string parse_rspec_html
 
-      def get_processing_of_rspec_html(html_path)
-        page = Nokogiri::HTML(read_file(html_path))
-        get_processing(page)
-      end
-
       def get_failed_cases_count_from_html(html_path)
         page = Nokogiri::HTML(read_file(html_path))
         get_failed_count(page)
