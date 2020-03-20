@@ -22,7 +22,9 @@ module OnlyofficeRspecResultParser
     end
 
     def get_total_time(page)
-      total_time = page.css('script:contains("Finished in")').text.match(/>(.*?)</)
+      total_time = page.css('script:contains("Finished in")')
+                       .text
+                       .match(/>(.*?)</)
       if total_time
         total_time[1]
       else
@@ -47,13 +49,16 @@ module OnlyofficeRspecResultParser
     def get_describe(page)
       results = ResultCreator.new
       page.at_css('div.results').xpath('./div').each do |current|
-        results.push_to_end(parse_describe(current), get_describe_level(current))
+        results.push_to_end(parse_describe(current),
+                            get_describe_level(current))
       end
       results.final_result
     end
 
     def get_describe_level(describe)
-      style_parameter = StringHelper.get_style_param(describe.xpath('./dl')[0][:style], 'margin-left')
+      style_string = describe.xpath('./dl')[0][:style]
+      style_parameter = StringHelper.get_style_param(style_string,
+                                                     'margin-left')
       StringHelper.delete_px(style_parameter).to_i / LEVEL_MARGIN
     end
   end

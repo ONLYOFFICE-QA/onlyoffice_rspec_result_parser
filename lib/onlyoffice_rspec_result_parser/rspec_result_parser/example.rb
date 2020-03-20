@@ -54,7 +54,7 @@ module OnlyofficeRspecResultParser
         if current_link.end_with?('png', 'jpg')
           text.gsub!(current_link, link_url_50_percent(current_link))
         elsif current_link.start_with?('http')
-          text.gsub!(current_link, "<a href='#{current_link}'>#{current_link}</a>")
+          text.gsub!(current_link, link_url(current_link))
         end
       end
       text
@@ -70,9 +70,15 @@ module OnlyofficeRspecResultParser
     end
 
     # @param [String] link to insert
-    # @return [String] result link
+    # @return [String] result link with 50 percent size
     def link_url_50_percent(link)
       "<a href='#{link}'><img src='#{link}' height='50%' width='50%'></a>"
+    end
+
+    # @param [String] link to insert
+    # @return [String] result link
+    def link_url(link)
+      "<a href='#{link}'>#{link}</a>"
     end
   end
 end
