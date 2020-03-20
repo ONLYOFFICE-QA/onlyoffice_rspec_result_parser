@@ -1,21 +1,26 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'onlyoffice_rspec_result_parser/version'
+require_relative 'lib/onlyoffice_rspec_result_parser/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = 'onlyoffice_rspec_result_parser'
-  spec.version       = OnlyofficeRspecResultParser::VERSION
-  spec.authors       = ['Pavel Lobashov', 'Ivan Tugin']
-  spec.email         = ['shockwavenn@gmail.com']
-
-  spec.summary       = 'Gem to parse rspec results'
-  spec.description   = 'Gem to parse rspec results. Needed in wrata project'
-  spec.homepage      = 'https://github.com/onlyoffice-testing-robot/onlyoffice_rspec_result_parser'
-
-  spec.files = `git ls-files lib LICENSE.txt README.md`.split($RS)
-
-  spec.add_runtime_dependency('nokogiri', '~> 1.6')
-  spec.license = 'AGPL-3.0'
+Gem::Specification.new do |s|
+  s.name = OnlyofficeRspecResultParser::NAME
+  s.version = OnlyofficeRspecResultParser::VERSION
+  s.platform = Gem::Platform::RUBY
+  s.required_ruby_version = '>= 2.3'
+  s.authors = ['ONLYOFFICE', 'Pavel Lobashov', 'Ivan Tugin']
+  s.email = %w[shockwavenn@gmail.com]
+  s.summary = 'Gem to parse rspec results'
+  s.description = 'Gem to parse rspec results. Needed in wrata project'
+  s.homepage = "https://github.com/onlyoffice-testing-robot/#{s.name}"
+  s.metadata = {
+    'bug_tracker_uri' => "#{s.homepage}/issues",
+    'changelog_uri' => "#{s.homepage}/blob/master/CHANGELOG.md",
+    'documentation_uri' => "https://www.rubydoc.info/gems/#{s.name}",
+    'homepage_uri' => s.homepage,
+    'source_code_uri' => s.homepage
+  }
+  s.files = Dir['lib/**/*']
+  s.license = 'AGPL-3.0'
+  s.add_runtime_dependency('nokogiri', '~> 1.6')
+  s.add_development_dependency('rake', '~> 13.0')
 end
