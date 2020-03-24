@@ -2,6 +2,12 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Fix failure for `get_total_result_of_rspec_html`,
+  `get_failed_cases_count_from_html` 
+  on empty string param
+
 ## 0.1.0 (2020-03-20)
 
 ### New features
