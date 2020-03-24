@@ -32,6 +32,8 @@ module OnlyofficeRspecResultParser
       alias parse_rspec_html_string parse_rspec_html
 
       def get_failed_cases_count_from_html(html_path)
+        return 0 if html_path.empty?
+
         page = Nokogiri::HTML(read_file(html_path))
         RspecResult.new.parse_page(page, true).failed_count
       end
