@@ -37,6 +37,8 @@ module OnlyofficeRspecResultParser
       end
 
       def get_total_result_of_rspec_html(html_path)
+        return html_path if html_path.empty?
+
         page = Nokogiri::HTML(read_file(html_path))
         RspecResult.new.parse_page(page, true).total
       end
