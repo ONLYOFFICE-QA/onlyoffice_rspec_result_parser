@@ -32,17 +32,19 @@ module OnlyofficeRspecResultParser
       alias parse_rspec_html_string parse_rspec_html
 
       def get_failed_cases_count_from_html(html_path)
-        return 0 if html_path.empty?
-
         page = Nokogiri::HTML(read_file(html_path))
-        RspecResult.new.parse_page(page, true).failed_count
+        result = RspecResult.new(page).parse_page(true)
+        return 0 unless result.valid_html?
+
+        result.failed_count
       end
 
       def get_total_result_of_rspec_html(html_path)
-        return html_path if html_path.empty?
-
         page = Nokogiri::HTML(read_file(html_path))
-        RspecResult.new.parse_page(page, true).total
+        result = RspecResult.new(page).parse_page(true)
+        return '' unless result.valid_html?
+
+        result.total
       end
 
       # @param page [String] data in page
@@ -51,7 +53,7 @@ module OnlyofficeRspecResultParser
       # @return [RspecResult] result of parsing
       def parse_test_result(page, with_describe_info: true)
         ResultParser.example_index = 0
-        RspecResult.new.parse_page(page, with_describe_info)
+        RspecResult.new(page).parse_page(with_describe_info)
       end
 
       private

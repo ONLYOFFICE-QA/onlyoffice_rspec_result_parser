@@ -2,6 +2,12 @@
 
 ## master (unreleased)
 
+## 0.1.2 (2020-04-03)
+
+### Fixes 
+
+* Do not fail if `get_total_result_of_rspec_html` recieve junk data
+
 ## 0.1.1 (2020-03-24)
 
 ### Fixes
