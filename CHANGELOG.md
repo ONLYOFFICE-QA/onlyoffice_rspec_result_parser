@@ -2,6 +2,11 @@
 
 ## master (unreleased)
 
+### Changes
+
+* Drop support of ruby < 2.5, since them EOLed
+* Use GitHub Actions instead of TravisCI
+
 ## 0.1.2 (2020-04-03)
 
 ### Fixes 
