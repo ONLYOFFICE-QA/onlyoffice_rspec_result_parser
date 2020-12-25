@@ -6,6 +6,7 @@
 
 * Drop support of ruby < 2.5, since them EOLed
 * Use GitHub Actions instead of TravisCI
+* Remove support of `codecov`
 
 ## 0.1.2 (2020-04-03)
 
