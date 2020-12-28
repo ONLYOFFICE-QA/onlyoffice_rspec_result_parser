@@ -5,6 +5,7 @@
 ### New Features
 
 * Support of `rubocop-performance`, `rubocop-rake`
+* Add `markdownlint` check in CI
 
 ### Changes
 
@@ -15,7 +16,7 @@
 
 ## 0.1.2 (2020-04-03)
 
-### Fixes 
+### Fixes
 
 * Do not fail if `get_total_result_of_rspec_html` recieve junk data
 
