@@ -6,6 +6,7 @@
 
 * Support of `rubocop-performance`, `rubocop-rake`
 * Add `markdownlint` check in CI
+* Add `rubocop` check in CI
 
 ### Changes
 
