@@ -6,6 +6,10 @@ module OnlyofficeRspecResultParser
     # @return [Describe] result describe
     attr_reader :final_result
 
+    # Push result to end
+    # @param [String] describe to pusth
+    # @param [Integer] level to check
+    # @return [Object] result
     def push_to_end(describe, level)
       if level.zero?
         @final_result = describe

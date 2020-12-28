@@ -17,6 +17,9 @@ module OnlyofficeRspecResultParser
     class << self
       attr_accessor :example_index
 
+      # Parse rspec html
+      # @param [String] html_path path to file
+      # @return [Object] result of parse
       def parse_rspec_html(html_path)
         page = Nokogiri::HTML(read_file(html_path))
         parse_test_result(page)
@@ -31,6 +34,9 @@ module OnlyofficeRspecResultParser
 
       alias parse_rspec_html_string parse_rspec_html
 
+      # Get failed count
+      # @param [String] html_path path to file
+      # @return [Integer] failed count
       def get_failed_cases_count_from_html(html_path)
         page = Nokogiri::HTML(read_file(html_path))
         result = RspecResult.new(page).parse_page
@@ -39,6 +45,9 @@ module OnlyofficeRspecResultParser
         result.failed_count
       end
 
+      # Get total case count
+      # @param [String] html_path path to file
+      # @return [Integer] total count
       def get_total_result_of_rspec_html(html_path)
         page = Nokogiri::HTML(read_file(html_path))
         result = RspecResult.new(page).parse_page
