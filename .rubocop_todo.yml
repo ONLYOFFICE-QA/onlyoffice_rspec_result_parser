@@ -18,10 +18,3 @@ Style/CaseLikeIf:
 Style/OptionalBooleanParameter:
   Exclude:
     - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/rspec_result.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: Methods.
-Style/RedundantArgument:
-  Exclude:
-    - 'lib/onlyoffice_rspec_result_parser/rspec_result_parser/example.rb'
