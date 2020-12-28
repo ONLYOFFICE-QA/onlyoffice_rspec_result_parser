@@ -3,6 +3,7 @@
 module OnlyofficeRspecResultParser
   # class for storing rspec result
   class RspecResult
+    # @return [Integer] margin value
     LEVEL_MARGIN = 15
 
     attr_accessor :processing, :result, :time, :total, :describe
@@ -24,6 +25,9 @@ module OnlyofficeRspecResultParser
       failed_count + passed_count
     end
 
+    # Parse current page
+    # @param [Boolean] with_describe_info should info be parsed
+    # @return [RspecResult] result of parse
     def parse_page(with_describe_info: true)
       return self unless valid_html?
 

@@ -11,6 +11,9 @@ module OnlyofficeRspecResultParser
       @result = result
     end
 
+    # Find last info on level
+    # @param [Integer] level
+    # @return [Object] result
     def find_last_on_lvl(level)
       level.zero? ? self : @child.last.find_last_on_lvl(level - 1)
     end

@@ -31,3 +31,5 @@ jobs:
       run: cat coverage/.last_run.json | jq '.result.covered_percent' | grep -q '100'
     - name: Check source files using `rubocop`
       run: rubocop
+    - name: Check that code 100% documented
+      run: yardoc . | grep -q '100.00% documented'
