@@ -2,11 +2,16 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Support of `rubocop-performance`, `rubocop-rake`
+
 ### Changes
 
 * Drop support of ruby < 2.5, since them EOLed
 * Use GitHub Actions instead of TravisCI
 * Remove support of `codecov`
+* Freeze all dependencies version in Gemfile.lock
 
 ## 0.1.2 (2020-04-03)
 
