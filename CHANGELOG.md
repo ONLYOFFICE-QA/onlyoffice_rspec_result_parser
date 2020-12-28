@@ -5,6 +5,7 @@
 ### New Features
 
 * Support of `rubocop-performance`, `rubocop-rake`
+* Add `markdownlint` check in CI
 
 ### Changes
 
