@@ -24,7 +24,7 @@ module OnlyofficeRspecResultParser
       failed_count + passed_count
     end
 
-    def parse_page(with_describe_info = true)
+    def parse_page(with_describe_info: true)
       return self unless valid_html?
 
       @describe = fetch_describe if with_describe_info

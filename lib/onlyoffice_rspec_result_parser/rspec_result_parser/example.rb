@@ -19,10 +19,11 @@ module OnlyofficeRspecResultParser
 
     def fetch_data(data)
       @text = data.css('span').first.text
-      @passed = data[:class].split(' ')[1]
-      if @passed == 'failed'
+      @passed = data[:class].split[1]
+      case @passed
+      when 'failed'
         fetch_failed_data(data)
-      elsif @passed == 'passed'
+      when 'passed'
         @duration = data.css('span')[1].text
       end
     end
