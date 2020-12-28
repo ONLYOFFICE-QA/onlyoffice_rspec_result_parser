@@ -14,6 +14,7 @@
 * Use GitHub Actions instead of TravisCI
 * Remove support of `codecov`
 * Freeze all dependencies version in Gemfile.lock
+* Change `RspecResult#parse_page` param to keyword argument
 
 ## 0.1.2 (2020-04-03)
 
