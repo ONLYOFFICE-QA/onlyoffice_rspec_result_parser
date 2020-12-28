@@ -20,11 +20,15 @@ gem 'onlyoffice_rspec_result_parser'
 
 And then execute:
 
-    # bundle
+```shell
+# bundle
+```
 
 Or install it yourself as:
 
-    # gem install onlyoffice_rspec_result_parser
+```ruby
+# gem install onlyoffice_rspec_result_parser
+```
 
 ## Usage
 
