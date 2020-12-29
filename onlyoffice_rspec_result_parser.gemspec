@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %w[shockwavenn@gmail.com]
   s.summary = 'Gem to parse rspec results'
   s.description = 'Gem to parse rspec results. Needed in wrata project'
-  s.homepage = "https://github.com/onlyoffice-testing-robot/#{s.name}"
+  s.homepage = "https://github.com/ONLYOFFICE-QA/#{s.name}"
   s.metadata = {
     'bug_tracker_uri' => "#{s.homepage}/issues",
     'changelog_uri' => "#{s.homepage}/blob/master/CHANGELOG.md",

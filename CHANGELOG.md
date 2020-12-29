@@ -20,6 +20,7 @@
 * Change `RspecResult#parse_page` param to keyword argument
 * Add missing documentation
 * Use `sh` command for better logging in rake release task
+* Move repo to `ONLYOFFICE-QA` org
 
 ## 0.1.2 (2020-04-03)
 
