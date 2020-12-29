@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.2.0 (2020-12-29)
+
 ### New Features
 
 * Support of `rubocop-performance`, `rubocop-rake`
