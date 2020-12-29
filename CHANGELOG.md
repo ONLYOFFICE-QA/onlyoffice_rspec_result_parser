@@ -9,6 +9,7 @@
 * Add `rubocop` check in CI
 * Add `yard` check that 100% code is documented
 * Add `dependabot` config
+* Add `ruby-3.0` to CI
 
 ### Changes
 
