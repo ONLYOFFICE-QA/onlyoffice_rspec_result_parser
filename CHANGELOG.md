@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Check for `simplecov` branch coverage in CI
+
 ## 0.2.0 (2020-12-29)
 
 ### New Features
