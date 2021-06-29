@@ -10,9 +10,9 @@ describe OnlyofficeRspecResultParser::ResultParser do
 
     it 'check url is clickable' do
       link = "<a href='https://doc-linux-autotest.teamlab.info/"\
-           "products/files/doceditor.aspx?fileid=2678604&new=true'>"\
-           'https://doc-linux-autotest.teamlab.info/products/files/'\
-           'doceditor.aspx?fileid=2678604&new=true</a>'
+             "products/files/doceditor.aspx?fileid=2678604&new=true'>"\
+             'https://doc-linux-autotest.teamlab.info/products/files/'\
+             'doceditor.aspx?fileid=2678604&new=true</a>'
       expect(result.describe.child.first.message).to include(link)
     end
 
