@@ -14,6 +14,7 @@
 
 * Require `mfa` for releasing gem
 * Remove `ruby-2.5` from CI since it's EOLed
+* Remove `codeclimate` config, since we don't use it any more
 
 ## 0.2.0 (2020-12-29)
 
