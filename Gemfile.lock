@@ -12,9 +12,9 @@ GEM
     diff-lcs (1.5.0)
     docile (1.4.0)
     iniparse (1.5.0)
-    mini_portile2 (2.6.1)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    mini_portile2 (2.7.1)
+    nokogiri (1.13.1)
+      mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
     overcommit (0.58.0)
       childprocess (>= 0.6.3, < 5)
@@ -87,4 +87,4 @@ DEPENDENCIES
   yard (>= 0.9.20)
 
 BUNDLED WITH
-   2.3.3
+   2.3.7
