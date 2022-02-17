@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onlyoffice_rspec_result_parser (0.2.0)
+    onlyoffice_rspec_result_parser (1.0.0)
       nokogiri (~> 1.6)
 
 GEM
