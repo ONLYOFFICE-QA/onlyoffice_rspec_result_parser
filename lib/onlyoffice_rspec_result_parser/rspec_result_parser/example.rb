@@ -51,7 +51,7 @@ module OnlyofficeRspecResultParser
     # @return [String] text with clickable link
     def format_link(text)
       links = URI.extract(text)
-      links.each do |current_link|
+      links.uniq.each do |current_link|
         if current_link.end_with?('png', 'jpg')
           text.gsub!(current_link, link_url_50_percent(current_link))
         elsif current_link.start_with?('http')
