@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title>RSpec results</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-size: 80%;
+  }
+  </style>
+  <script type="text/javascript">
+    // <![CDATA[
+
+function addClass(element_id, classname) {
+  document.getElementById(element_id).className += (" " + classname);
+}
+
+function removeClass(element_id, classname) {
+  var elem = document.getElementById(element_id);
+  var classlist = elem.className.replace(classname,'');
+  elem.className = classlist;
+}
+
+function moveProgressBar(percentDone) {
+  document.getElementById("rspec-header").style.width = percentDone +"%";
+}
+
+function makeRed(element_id) {
+  removeClass(element_id, 'passed');
+  removeClass(element_id, 'not_implemented');
+  addClass(element_id,'failed');
+}
+
+function makeYellow(element_id) {
+  var elem = document.getElementById(element_id);
+  if (elem.className.indexOf("failed") == -1) {  // class doesn't includes failed
+    if (elem.className.indexOf("not_implemented") == -1) { // class doesn't include not_implemented
+      removeClass(element_id, 'passed');
+      addClass(element_id,'not_implemented');
+    }
+  }
+}
+
+function apply_filters() {
+  var passed_filter = document.getElementById('passed_checkbox').checked;
+  var failed_filter = document.getElementById('failed_checkbox').checked;
+  var pending_filter = document.getElementById('pending_checkbox').checked;
+
+  assign_display_style("example passed", passed_filter);
+  assign_display_style("example failed", failed_filter);
+  assign_display_style("example not_implemented", pending_filter);
+
+  assign_display_style_for_group("example_group passed", passed_filter);
+  assign_display_style_for_group("example_group not_implemented", pending_filter, pending_filter || passed_filter);
+  assign_display_style_for_group("example_group failed", failed_filter, failed_filter || pending_filter || passed_filter);
+}
+
+function get_display_style(display_flag) {
+  var style_mode = 'none';
+  if (display_flag == true) {
+    style_mode = 'block';
+  }
+  return style_mode;
+}
+
+function assign_display_style(classname, display_flag) {
+  var style_mode = get_display_style(display_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    elems[i].style.display = style_mode;
+  }
+}
+
+function assign_display_style_for_group(classname, display_flag, subgroup_flag) {
+  var display_style_mode = get_display_style(display_flag);
+  var subgroup_style_mode = get_display_style(subgroup_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    var style_mode = display_style_mode;
+    if ((display_flag != subgroup_flag) && (elems[i].getElementsByTagName('dt')[0].innerHTML.indexOf(", ") != -1)) {
+      elems[i].style.display = subgroup_style_mode;
+    } else {
+      elems[i].style.display = display_style_mode;
+    }
+  }
+}
+
+    // ]]>
+  </script>
+  <style type="text/css">
+#rspec-header {
+  background: #65C400; color: #fff; height: 4em;
+}
+
+.rspec-report h1 {
+  margin: 0px 10px 0px 10px;
+  padding: 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  font-size: 1.8em;
+  position: absolute;
+}
+
+#label {
+  float:left;
+}
+
+#display-filters {
+  float:left;
+  padding: 28px 0 0 40%;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+}
+
+#summary {
+  float:right;
+  padding: 5px 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  text-align: right;
+}
+
+#summary p {
+  margin: 0 0 0 2px;
+}
+
+#summary #totals {
+  font-size: 1.2em;
+}
+
+.example_group {
+  margin: 0 10px 5px;
+  background: #fff;
+}
+
+dl {
+  margin: 0; padding: 0 0 5px;
+  font: normal 11px "Lucida Grande", Helvetica, sans-serif;
+}
+
+dt {
+  padding: 3px;
+  background: #65C400;
+  color: #fff;
+  font-weight: bold;
+}
+
+dd {
+  margin: 5px 0 5px 5px;
+  padding: 3px 3px 3px 18px;
+}
+
+dd .duration {
+  padding-left: 5px;
+  text-align: right;
+  right: 0px;
+  float:right;
+}
+
+dd.example.passed {
+  border-left: 5px solid #65C400;
+  border-bottom: 1px solid #65C400;
+  background: #DBFFB4; color: #3D7700;
+}
+
+dd.example.not_implemented {
+  border-left: 5px solid #FAF834;
+  border-bottom: 1px solid #FAF834;
+  background: #FCFB98; color: #131313;
+}
+
+dd.example.pending_fixed {
+  border-left: 5px solid #0000C2;
+  border-bottom: 1px solid #0000C2;
+  color: #0000C2; background: #D3FBFF;
+}
+
+dd.example.failed {
+  border-left: 5px solid #C20000;
+  border-bottom: 1px solid #C20000;
+  color: #C20000; background: #FFFBD3;
+}
+
+
+dt.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+dt.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+dt.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+#rspec-header.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+#rspec-header.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+#rspec-header.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+.backtrace {
+  color: #000;
+  font-size: 12px;
+}
+
+a {
+  color: #BE5C00;
+}
+
+/* Ruby code, style similar to vibrant ink */
+.ruby {
+  font-size: 12px;
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  padding: 0.1em 0 0.2em 0;
+}
+
+.ruby .keyword { color: #FF6600; }
+.ruby .constant { color: #339999; }
+.ruby .attribute { color: white; }
+.ruby .global { color: white; }
+.ruby .module { color: white; }
+.ruby .class { color: white; }
+.ruby .string { color: #66FF00; }
+.ruby .ident { color: white; }
+.ruby .method { color: #FFCC00; }
+.ruby .number { color: white; }
+.ruby .char { color: white; }
+.ruby .comment { color: #9933CC; }
+.ruby .symbol { color: white; }
+.ruby .regex { color: #44B4CC; }
+.ruby .punct { color: white; }
+.ruby .escape { color: white; }
+.ruby .interp { color: white; }
+.ruby .expr { color: white; }
+
+.ruby .offending { background-color: gray; }
+.ruby .linenum {
+  width: 75px;
+  padding: 0.1em 1em 0.2em 0;
+  color: #000000;
+  background-color: #FFFBD3;
+}
+
+  </style>
+</head>
+<body>
+<div class="rspec-report">
+
+<div id="rspec-header">
+  <div id="label">
+    <h1>RSpec Code Examples</h1>
+  </div>
+
+  <div id="display-filters">
+    <input id="passed_checkbox"  name="passed_checkbox"  type="checkbox" checked="checked" onchange="apply_filters()" value="1" /> <label for="passed_checkbox">Passed</label>
+    <input id="failed_checkbox"  name="failed_checkbox"  type="checkbox" checked="checked" onchange="apply_filters()" value="2" /> <label for="failed_checkbox">Failed</label>
+    <input id="pending_checkbox" name="pending_checkbox" type="checkbox" checked="checked" onchange="apply_filters()" value="3" /> <label for="pending_checkbox">Pending</label>
+  </div>
+
+  <div id="summary">
+    <p id="totals">&#160;</p>
+    <p id="duration">&#160;</p>
+  </div>
+</div>
+
+
+<div class="results">
+<div id="div_group_1" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_1" class="passed">Calendar</dt>
+  </dl>
+</div>
+<div id="div_group_2" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_2" class="passed">Tests for teamlab calendar without GMailCalendar</dt>
+  </dl>
+</div>
+<div id="div_group_3" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_3" class="passed">New iCal</dt>
+    <script type="text/javascript">moveProgressBar('9.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">New iCal Calendar: Проверка имени ical календаря :                                   Test started at: 2022-02-17 12:32:31 +0300 ,
+                                  Test finished at: 2022-02-17 12:32:59 +0300</span><span class='duration'>28.12034s</span></dd>
+    <script type="text/javascript">moveProgressBar('18.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">New iCal Calendar: Проверка цвета ical календаря :                                   Test started at: 2022-02-17 12:32:59 +0300 ,
+                                  Test finished at: 2022-02-17 12:33:25 +0300</span><span class='duration'>25.90155s</span></dd>
+  </dl>
+</div>
+<div id="div_group_4" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_4" class="passed">Edit iCal</dt>
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_4');</script>
+    <script type="text/javascript">makeRed('example_group_4');</script>
+    <script type="text/javascript">moveProgressBar('27.2');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">Edit Other Calendar: Изменить имя other календаря</span>
+      <span class="duration">58.08209s</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>  Failure/Error: calendar_page.calendar_edit_ical(ical_data)
+
+  Selenium::WebDriver::Error::UnexpectedAlertOpenError:
+    JS Alert Happened: Exception unexpected alert open: {Alert text : Could not resolve current tenant :-(.}
+      (Session info: chrome=97.0.4692.99) in execute_javascript: return !!window.jQuery
+
+    Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/20b02fe7-5fe1-4cce-b2a2-22d99704bae2.png
+
+    Console_errors: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/api/2.0/calendar/181950.json - Failed to load resource: the server responded with a status of 500 ()
+
+    Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+
+    Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/6594a625-b4ea-4ffc-90d6-485567e56adb.png
+
+    Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+  # ./framework/teamlab_gem_overrides/webdriver.rb:44:in `webdriver_error&#39;
+  # /usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:25:in `rescue in wait_until&#39;
+  # /usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:14:in `wait_until&#39;
+  # ./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:133:in `submit_save_edit_ical_and_other_calendar&#39;
+  # ./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:116:in `submit_save_cancel_or_delete_button&#39;
+  # ./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:76:in `edit_ical&#39;
+  # ./framework/modules/calendar/modules/calendar_left_toolbar.rb:91:in `calendar_edit_ical&#39;
+  # ./spec/portals/calendar/calendar_ical_spec.rb:70:in `block (4 levels) in &lt;top (required)&gt;&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:124:in `block in run&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `loop&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `run&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec_ext/rspec_ext.rb:12:in `run_with_retry&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:37:in `block (2 levels) in setup&#39;
+  # ------------------
+  # --- Caused by: ---
+  # Selenium::WebDriver::Error::UnexpectedAlertOpenError:
+  #   Exception unexpected alert open: {Alert text : Could not resolve current tenant :-(.}
+  #     (Session info: chrome=97.0.4692.99) in execute_javascript: return !!window.jQuery
+  #   
+  #   Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/20b02fe7-5fe1-4cce-b2a2-22d99704bae2.png
+  #   
+  #   Console_errors: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/api/2.0/calendar/181950.json - Failed to load resource: the server responded with a status of 500 ()
+  #   
+  #   Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+  #   #0 0x5636a0432a23 &lt;unknown&gt;</pre></div>
+        <div class="backtrace"><pre>./framework/teamlab_gem_overrides/webdriver.rb:44:in `webdriver_error&#39;
+/usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:25:in `rescue in wait_until&#39;
+/usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:14:in `wait_until&#39;
+./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:133:in `submit_save_edit_ical_and_other_calendar&#39;
+./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:116:in `submit_save_cancel_or_delete_button&#39;
+./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:76:in `edit_ical&#39;
+./framework/modules/calendar/modules/calendar_left_toolbar.rb:91:in `calendar_edit_ical&#39;
+./spec/portals/calendar/calendar_ical_spec.rb:70:in `block (4 levels) in &lt;top (required)&gt;&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:124:in `block in run&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `loop&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `run&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec_ext/rspec_ext.rb:12:in `run_with_retry&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:37:in `block (2 levels) in setup&#39;
+------------------
+--- Caused by: ---
+Selenium::WebDriver::Error::UnexpectedAlertOpenError:
+  Exception unexpected alert open: {Alert text : Could not resolve current tenant :-(.}
+    (Session info: chrome=97.0.4692.99) in execute_javascript: return !!window.jQuery
+  
+  Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/20b02fe7-5fe1-4cce-b2a2-22d99704bae2.png
+  
+  Console_errors: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/api/2.0/calendar/181950.json - Failed to load resource: the server responded with a status of 500 ()
+  
+  Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+  #0 0x5636a0432a23 &lt;unknown&gt;</pre></div>
+    <pre class="ruby"><code><span class="linenum">42</span>    select_top_frame
+<span class="linenum">43</span>    err_msg = detailed_error_message(error_message)
+<span class="offending"><span class="linenum">44</span>    raise exception, err_msg</span>
+<span class="linenum">45</span>  end
+<span class="linenum">46</span>
+<span class="linenum">47</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('36.3');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">Edit Other Calendar: Изменить цвет other календаря</span>
+      <span class="duration">59.87674s</span>
+      <div class="failure" id="failure_2">
+        <div class="message"><pre>  Failure/Error: calendar_page.calendar_edit_ical(ical_data)
+
+  Selenium::WebDriver::Error::UnexpectedAlertOpenError:
+    JS Alert Happened: Exception unexpected alert open: {Alert text : Could not resolve current tenant :-(.}
+      (Session info: chrome=97.0.4692.99) in execute_javascript: return !!window.jQuery
+
+    Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/e612f99d-4965-4482-8817-cfed0d3fdf68.png
+
+    Console_errors: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/api/2.0/calendar/181966.json - Failed to load resource: the server responded with a status of 500 ()
+
+    Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+
+    Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/2c28afb4-0bf1-4d41-b831-fb0353770d8d.png
+
+    Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+  # ./framework/teamlab_gem_overrides/webdriver.rb:44:in `webdriver_error&#39;
+  # /usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:25:in `rescue in wait_until&#39;
+  # /usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:14:in `wait_until&#39;
+  # ./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:133:in `submit_save_edit_ical_and_other_calendar&#39;
+  # ./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:116:in `submit_save_cancel_or_delete_button&#39;
+  # ./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:76:in `edit_ical&#39;
+  # ./framework/modules/calendar/modules/calendar_left_toolbar.rb:91:in `calendar_edit_ical&#39;
+  # ./spec/portals/calendar/calendar_ical_spec.rb:77:in `block (4 levels) in &lt;top (required)&gt;&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:124:in `block in run&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `loop&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `run&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec_ext/rspec_ext.rb:12:in `run_with_retry&#39;
+  # /usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:37:in `block (2 levels) in setup&#39;
+  # ------------------
+  # --- Caused by: ---
+  # Selenium::WebDriver::Error::UnexpectedAlertOpenError:
+  #   Exception unexpected alert open: {Alert text : Could not resolve current tenant :-(.}
+  #     (Session info: chrome=97.0.4692.99) in execute_javascript: return !!window.jQuery
+  #   
+  #   Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/e612f99d-4965-4482-8817-cfed0d3fdf68.png
+  #   
+  #   Console_errors: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/api/2.0/calendar/181966.json - Failed to load resource: the server responded with a status of 500 ()
+  #   
+  #   Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+  #   #0 0x561693bd0a23 &lt;unknown&gt;</pre></div>
+        <div class="backtrace"><pre>./framework/teamlab_gem_overrides/webdriver.rb:44:in `webdriver_error&#39;
+/usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:25:in `rescue in wait_until&#39;
+/usr/local/bundle/gems/onlyoffice_webdriver_wrapper-1.2.0/lib/onlyoffice_webdriver_wrapper/webdriver/wait_until_methods.rb:14:in `wait_until&#39;
+./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:133:in `submit_save_edit_ical_and_other_calendar&#39;
+./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:116:in `submit_save_cancel_or_delete_button&#39;
+./framework/modules/calendar/calendar_edit_i_cal_and_other_calendar.rb:76:in `edit_ical&#39;
+./framework/modules/calendar/modules/calendar_left_toolbar.rb:91:in `calendar_edit_ical&#39;
+./spec/portals/calendar/calendar_ical_spec.rb:77:in `block (4 levels) in &lt;top (required)&gt;&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:124:in `block in run&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `loop&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:110:in `run&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec_ext/rspec_ext.rb:12:in `run_with_retry&#39;
+/usr/local/bundle/gems/rspec-retry-0.6.2/lib/rspec/retry.rb:37:in `block (2 levels) in setup&#39;
+------------------
+--- Caused by: ---
+Selenium::WebDriver::Error::UnexpectedAlertOpenError:
+  Exception unexpected alert open: {Alert text : Could not resolve current tenant :-(.}
+    (Session info: chrome=97.0.4692.99) in execute_javascript: return !!window.jQuery
+  
+  Error screenshot: https://webdriver-wrapper-screenshots.s3.amazonaws.com/e612f99d-4965-4482-8817-cfed0d3fdf68.png
+  
+  Console_errors: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/api/2.0/calendar/181966.json - Failed to load resource: the server responded with a status of 500 ()
+  
+  Page address: https://nctautotest-20220217123227-calendar-ical-spec.teamlab.info/addons/calendar/#
+  #0 0x561693bd0a23 &lt;unknown&gt;</pre></div>
+    <pre class="ruby"><code><span class="linenum">42</span>    select_top_frame
+<span class="linenum">43</span>    err_msg = detailed_error_message(error_message)
+<span class="offending"><span class="linenum">44</span>    raise exception, err_msg</span>
+<span class="linenum">45</span>  end
+<span class="linenum">46</span>
+<span class="linenum">47</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('45.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">Edit Other Calendar: Hide From List other calendar :                                   Test started at: 2022-02-17 12:35:23 +0300 ,
+                                  Test finished at: 2022-02-17 12:35:50 +0300</span><span class='duration'>27.10399s</span></dd>
+  </dl>
+</div>
+<div id="div_group_5" class="example_group passed">
+  <dl style="margin-left: 45px;">
+  <dt id="example_group_5" class="passed">#gmail</dt>
+    <script type="text/javascript">makeYellow('div_group_5');</script>
+    <script type="text/javascript">makeYellow('example_group_5');</script>
+    <script type="text/javascript">moveProgressBar('54.5');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">Edit Calendar: Экспортировать события в iCal - скачивание файла браузером - импорт в GMailCalendar (PENDING: Google is blocking autotest logins)</span></dd>
+    <script type="text/javascript">makeYellow('div_group_5');</script>
+    <script type="text/javascript">makeYellow('example_group_5');</script>
+    <script type="text/javascript">moveProgressBar('63.6');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">Edit Calendar: Экспортировать события в iCal - копирование и вставка ссылки в сторонний сервис (PENDING: Google is blocking autotest logins)</span></dd>
+  </dl>
+</div>
+<div id="div_group_6" class="example_group passed">
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_6" class="passed">Other Calendar</dt>
+    <script type="text/javascript">makeYellow('div_group_6');</script>
+    <script type="text/javascript">makeYellow('example_group_6');</script>
+    <script type="text/javascript">moveProgressBar('72.7');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">Other Calendar: Проврека наличия прокрутки у списка other Calendar (PENDING: https://github.com/ONLYOFFICE/testing-onlyoffice/issues/2133)</span></dd>
+    <script type="text/javascript">moveProgressBar('81.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">Other Calendar: Проверка работы кнопки-иконки &quot;отображать/не отображать календарь&quot; у Other Calendar :                                   Test started at: 2022-02-17 12:43:48 +0300 ,
+                                  Test finished at: 2022-02-17 12:46:26 +0300</span><span class='duration'>157.50031s</span></dd>
+  </dl>
+</div>
+<div id="div_group_7" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_7" class="passed">Tests for teamlab calendar with GMail Calendar</dt>
+    <script type="text/javascript">makeYellow('div_group_7');</script>
+    <script type="text/javascript">makeYellow('example_group_7');</script>
+    <script type="text/javascript">moveProgressBar('90.9');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">iCal Calendar: Проверка соответствия отображаемого iCal-потока оригинальному календарю (PENDING: Google is blocking autotest logins)</span></dd>
+    <script type="text/javascript">makeYellow('div_group_7');</script>
+    <script type="text/javascript">makeYellow('example_group_7');</script>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">iCal Calendar: Проверка соответствия отображаемого iCal-потока оригинальному календарю после внесения изменений в последний (PENDING: Google is blocking autotest logins)</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>944.84900 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "11 examples, 2 failures, 5 pending";</script>
+</div>
+</div>
+</body>
+</html>

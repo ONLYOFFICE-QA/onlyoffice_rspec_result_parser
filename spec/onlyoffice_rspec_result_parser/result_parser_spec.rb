@@ -17,10 +17,14 @@ describe OnlyofficeRspecResultParser::ResultParser do
     end
 
     it 'check image is inline' do
-      img_string = "<img src='https://nct-data-share."\
-                   's3-us-west-2.amazonaws.com/'\
-                   "screenshots/irkptCRjvigq.png' height='50%' width='50%'>"
-      expect(result.describe.child.first.message).to include(img_string)
+      expect(result.describe.child.first.message).to include("<img src='https://nct-data-share."\
+                                                             's3-us-west-2.amazonaws.com/'\
+                                                             "screenshots/irkptCRjvigq.png' height='50%' width='50%'>")
+    end
+
+    it 'example with several same screenshot return correct link' do
+      expect(described_class.parse_rspec_html('spec/rspec_examples/example_several_same_screenshots.html')
+                            .describe.child[0].child[1].child[1].screenshot).to match(URI::DEFAULT_PARSER.make_regexp)
     end
   end
 
