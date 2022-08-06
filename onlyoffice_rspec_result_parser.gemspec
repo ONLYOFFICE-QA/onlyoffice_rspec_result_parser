@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name = OnlyofficeRspecResultParser::NAME
   s.version = OnlyofficeRspecResultParser::VERSION
   s.platform = Gem::Platform::RUBY
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 2.7'
   s.authors = ['ONLYOFFICE', 'Pavel Lobashov', 'Ivan Tugin']
   s.email = %w[shockwavenn@gmail.com]
   s.summary = 'Gem to parse rspec results'
