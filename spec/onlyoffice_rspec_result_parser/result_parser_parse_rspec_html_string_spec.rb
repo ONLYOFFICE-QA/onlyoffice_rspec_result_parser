@@ -14,7 +14,7 @@ describe OnlyofficeRspecResultParser::ResultParser,
     file = File.read('spec/rspec_examples/result_page_url.html')
     result = described_class.parse_rspec_html_string(file)
     expect(result.describe.child[2].page_url)
-      .to eq('https://saul.teamlab.info/products/files/'\
+      .to eq('https://saul.teamlab.info/products/files/' \
              'doceditor.aspx?fileid=42774')
   end
 end

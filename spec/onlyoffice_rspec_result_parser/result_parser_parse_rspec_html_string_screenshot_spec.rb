@@ -14,7 +14,7 @@ describe OnlyofficeRspecResultParser::ResultParser,
     file = File.read('spec/rspec_examples/link_in_result.html')
     result = described_class.parse_rspec_html_string(file)
     expect(result.describe.child.first.screenshot)
-      .to eq('https://nct-data-share.s3-us-west-2.amazonaws.com/'\
+      .to eq('https://nct-data-share.s3-us-west-2.amazonaws.com/' \
              'screenshots/irkptCRjvigq.png')
   end
 end
