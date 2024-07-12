@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   }
   s.files = Dir['lib/**/*']
   s.license = 'AGPL-3.0'
-  s.add_runtime_dependency('nokogiri', '~> 1.6')
+  s.add_dependency('nokogiri', '~> 1.6')
 end
