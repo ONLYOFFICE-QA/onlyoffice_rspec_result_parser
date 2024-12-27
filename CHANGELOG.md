@@ -13,7 +13,7 @@
 
 * Drop `ruby-2.6`, `ruby-2.7` support since it's EOL'ed
 * Fix `rubocop-1.65.0` cop `Gemspec/AddRuntimeDependency`
-* Remove `ruby-3.0` from CI, since it's EOLed
+* Drop `ruby-3.0` support since it's EOL'ed
 
 ## 1.0.0 (2022-02-17)
 
